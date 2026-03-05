@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@SrNatsuno - Redes Sociais</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>@SrNatsuno - Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Reset e Configurações Básicas */
+        /* --- CONFIGURAÇÕES GERAIS --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
             background-color: #050505;
-            color: #ffffff;
+            color: #fff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
+        /* --- FUNDO DE PARTÍCULAS --- */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -32,58 +33,42 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            pointer-events: auto;
         }
 
+        /* --- CONTAINER --- */
         .container {
-            width: 100%;
-            max-width: 500px;
-            padding: 40px 20px;
-            z-index: 1;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        header {
+            width: 90%;
+            max-width: 450px;
             text-align: center;
-            margin-bottom: 30px;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
         }
 
+        /* --- PERFIL --- */
         .profile-pic {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 3px solid #ffffff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-            object-fit: cover;
-            margin: 0 auto 15px auto; /* Centralizado */
-            animation: float 6s ease-in-out infinite;
-            /* CAMINHO DA SUA IMAGEM ABAIXO */
-            background: url('perfil.png') center/cover; 
+            margin: 0 auto 15px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            background: url('https://via.placeholder.com/120') center/cover; /* Substitua pela sua foto */
+            animation: float 4s ease-in-out infinite;
         }
 
         h1 {
             font-size: 1.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 0.9rem;
-            color: #aaaaaa;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+        .subtitle {
             color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
         }
 
+        /* --- LINKS --- */
         .links-grid {
             display: flex;
             flex-direction: column;
@@ -93,89 +78,94 @@
         .link-card {
             display: flex;
             align-items: center;
-            padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.03);
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             text-decoration: none;
-            color: #ffffff;
-            font-weight: 600;
-            letter-spacing: 1px;
+            color: #fff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
+            
+            /* Animação de entrada em cascata */
             opacity: 0;
-            animation: slideUp 0.8s forwards;
+            animation: slideUp 0.6s ease forwards;
         }
 
+        /* Tempos diferentes para cada botão aparecer (Efeito cascata) */
         .link-card:nth-child(1) { animation-delay: 0.1s; }
         .link-card:nth-child(2) { animation-delay: 0.2s; }
         .link-card:nth-child(3) { animation-delay: 0.3s; }
         .link-card:nth-child(4) { animation-delay: 0.4s; }
         .link-card:nth-child(5) { animation-delay: 0.5s; }
         .link-card:nth-child(6) { animation-delay: 0.6s; }
-        .link-card:nth-child(7) { animation-delay: 0.7s; }
 
-        .link-card i {
-            font-size: 1.5rem;
-            position: absolute;
-            left: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .link-card span {
-            width: 100%;
+        .link-card i, .link-card svg {
+            font-size: 1.4rem;
+            width: 30px;
+            height: 1.4rem; /* Importante para o SVG do Roblox */
+            margin-right: 15px;
             text-align: center;
-            z-index: 2;
+            fill: currentColor; /* Faz o SVG respeitar a cor do texto */
         }
 
+        /* EFEITOS DE HOVER GERAIS */
         .link-card:hover {
-            background: #ffffff;
-            color: #000000;
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-            border-color: #ffffff;
+            transform: translateX(10px) scale(1.02);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
-        .link-card:hover i {
-            transform: scale(1.2) rotate(360deg);
-        }
+        /* --- CORES DE HOVER --- */
+        .card-tiktok:hover { border-color: #ff0050; box-shadow: 0 0 15px rgba(255, 0, 80, 0.4); color: #ff0050; }
+        .card-youtube:hover { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); color: #ff0000; }
+        .card-instagram:hover { border-color: #e1306c; box-shadow: 0 0 15px rgba(225, 48, 108, 0.4); color: #e1306c; }
+        .card-twitter:hover { border-color: #1da1f2; box-shadow: 0 0 15px rgba(29, 161, 242, 0.4); color: #1da1f2; }
+        .card-roblox:hover { border-color: #ffffff; box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); color: #fff; }
 
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: skewX(-20deg);
-            transition: 0.5s;
-        }
-
-        .link-card:hover::before {
-            left: 150%;
-        }
-
-        .instagram-card {
-            padding: 40px 25px;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .instagram-card i {
-            position: relative;
-            left: 0;
-            font-size: 2.5rem;
-        }
-        .instagram-card span {
+        /* --- BOTÃO DISCORD (MAIOR E ESPECIAL) --- */
+        .card-discord {
+            margin-top: 10px;
+            padding: 22px 25px;
+            background: rgba(88, 101, 242, 0.15);
+            border: 2px solid rgba(88, 101, 242, 0.4);
+            font-weight: bold;
             font-size: 1.1rem;
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+        .card-discord i {
+            color: #5865F2;
+            font-size: 1.8rem;
+        }
+
+        .card-discord:hover {
+            transform: scale(1.05); /* Cresce no centro */
+            background: #5865F2 !important;
+            border-color: #fff !important;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.8);
+            color: #fff !important;
+        }
+
+        .card-discord:hover i {
+            color: #fff;
+        }
+
+        /* --- ANIMAÇÕES --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
     </style>
 </head>
@@ -184,50 +174,36 @@
     <canvas id="particle-canvas"></canvas>
 
     <div class="container">
-        <header>
-            <div class="profile-pic"></div>
-            <h1>@SrNatsuno</h1>
-            <p>Criador de Conteúdo</p>
-            <i class="fa-brands fa-tiktok" style="font-size: 1.5rem; margin-bottom: 20px;"></i>
-        </header>
-
-        <div class="section-title">Redes Sociais</div>
+        <div class="profile-pic"></div>
+        <h1>@SrNatsuno</h1>
+        <p class="subtitle">Content Creator & Gamer</p>
 
         <div class="links-grid">
-            <a href="https://discord.gg/t9s3y3mPyG" target="_blank" class="link-card">
-                <i class="fa-brands fa-discord"></i>
-                <span>Discord [Meu Servidor]</span>
-            </a>
-
-            <a href="https://www.tiktok.com/@srnatsuno" target="_blank" class="link-card">
+            <a href="#" class="link-card card-tiktok">
                 <i class="fa-brands fa-tiktok"></i>
                 <span>TikTok</span>
             </a>
-
-            <a href="https://www.youtube.com/@srnatsuno" target="_blank" class="link-card">
+            <a href="#" class="link-card card-youtube">
                 <i class="fa-brands fa-youtube"></i>
                 <span>YouTube</span>
             </a>
-
-            <a href="https://x.com/SrNatsuno" target="_blank" class="link-card">
-                <i class="fa-brands fa-x-twitter"></i>
-                <span>X</span>
-            </a>
-
-            <a href="https://www.roblox.com/users/2362102738/profile" target="_blank" class="link-card">
-                <i class="fa-solid fa-gamepad"></i>
-                <span>Roblox</span>
-            </a>
-
-            <a href="http://gamejolt.com/invite/natsuno" target="_blank" class="link-card">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Game Jolt</span>
-            </a>
-
-            <a href="https://www.instagram.com/srnatsuno" target="_blank" class="link-card instagram-card">
+            <a href="#" class="link-card card-instagram">
                 <i class="fa-brands fa-instagram"></i>
                 <span>Instagram</span>
-                <span style="font-size: 0.8rem; font-weight: normal; color: #aaa;">@srnatsuno • Siga lá!</span>
+            </a>
+            <a href="#" class="link-card card-twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span>Twitter / X</span>
+            </a>
+            <a href="#" class="link-card card-roblox">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.385 0L0 18.615l18.615 5.385L24 5.385 5.385 0zm10.22 15.606l-4.717-1.364 1.364-4.717 4.717 1.364-1.364 4.717z"/>
+                </svg>
+                <span>Roblox</span>
+            </a>
+            <a href="#" class="link-card card-discord">
+                <i class="fa-brands fa-discord"></i>
+                <span>Entrar no Servidor</span>
             </a>
         </div>
     </div>
@@ -237,83 +213,116 @@
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        let particlesArray = [];
-        let mouse = { x: null, y: null, radius: 150 }
 
-        window.addEventListener('mousemove', function(event) { mouse.x = event.x; mouse.y = event.y; });
-        window.addEventListener('mouseout', function() { mouse.x = undefined; mouse.y = undefined; });
+        let particlesArray = [];
+        
+        // Interação com o Mouse
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 120 // Área de repulsão
+        }
+
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        // Tira o mouse da tela quando ele sai da janela
+        window.addEventListener('mouseout', function() {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
 
         class Particle {
-            constructor(x, y, directionX, directionY, size, color) {
-                this.x = x; this.y = y;
-                this.directionX = directionX; this.directionY = directionY;
-                this.size = size; this.color = color;
-                this.baseX = this.x; this.baseY = this.y;
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.baseX = this.x;
+                this.baseY = this.y;
                 this.density = (Math.random() * 30) + 1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = this.color;
-                ctx.fill();
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
             }
             update() {
+                // Movimento contínuo suave
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Repulsão do mouse
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                let forceDirectionX = dx / distance;
+                let forceDirectionY = dy / distance;
+                let maxDistance = mouse.radius;
+                let force = (maxDistance - distance) / maxDistance;
+                let directionX = forceDirectionX * force * this.density;
+                let directionY = forceDirectionY * force * this.density;
+
                 if (distance < mouse.radius) {
-                    let force = (mouse.radius - distance) / mouse.radius;
-                    this.x -= (dx / distance) * force * this.density;
-                    this.y -= (dy / distance) * force * this.density;
-                } else {
-                    if (this.x !== this.baseX) this.x -= (this.x - this.baseX)/10;
-                    if (this.y !== this.baseY) this.y -= (this.y - this.baseY)/10;
+                    this.x -= directionX;
+                    this.y -= directionY;
                 }
-                this.baseX += this.directionX;
-                this.baseY += this.directionY;
-                if (this.baseX < 0 || this.baseX > canvas.width) this.directionX = -this.directionX;
-                if (this.baseY < 0 || this.baseY > canvas.height) this.directionY = -this.directionY;
-                this.draw();
+
+                // Rebater nas bordas
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
         function init() {
             particlesArray = [];
             let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            if(numberOfParticles > 120) numberOfParticles = 120; // Limite para não travar
+            
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = (Math.random() * 2) + 1;
-                let x = Math.random() * innerWidth;
-                let y = Math.random() * innerHeight;
-                let directionX = (Math.random() * 1) - 0.5;
-                let directionY = (Math.random() * 1) - 0.5;
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, 'rgba(255, 255, 255, 0.8)'));
+                particlesArray.push(new Particle());
             }
         }
 
-        function connect() {
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance/20000})`;
-                        ctx.lineWidth = 1;
+        function handleParticles() {
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+                
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x;
+                    const dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120) { 
                         ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance/120})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
                         ctx.stroke();
+                        ctx.closePath();
                     }
                 }
             }
         }
 
         function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            handleParticles();
             requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-            particlesArray.forEach(p => p.update());
-            connect();
         }
 
-        window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
         init();
         animate();
     </script>
