@@ -55,9 +55,8 @@
             border: 3px solid #ffffff;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             object-fit: cover;
-            margin: 0 auto 15px auto; /* Centralizado */
+            margin: 0 auto 15px auto;
             animation: float 6s ease-in-out infinite;
-            /* CAMINHO DA SUA IMAGEM ABAIXO */
             background: url('perfil.png') center/cover; 
         }
 
@@ -110,6 +109,7 @@
             animation: slideUp 0.8s forwards;
         }
 
+        /* Delays das animações */
         .link-card:nth-child(1) { animation-delay: 0.1s; }
         .link-card:nth-child(2) { animation-delay: 0.2s; }
         .link-card:nth-child(3) { animation-delay: 0.3s; }
@@ -117,6 +117,7 @@
         .link-card:nth-child(5) { animation-delay: 0.5s; }
         .link-card:nth-child(6) { animation-delay: 0.6s; }
         .link-card:nth-child(7) { animation-delay: 0.7s; }
+        .link-card:nth-child(8) { animation-delay: 0.8s; }
 
         .link-card i {
             font-size: 1.5rem;
@@ -159,7 +160,6 @@
             left: 150%;
         }
 
-        /* Classe para o botão de destaque (Discord) */
         .featured-card {
             padding: 40px 25px;
             flex-direction: column;
@@ -223,6 +223,11 @@
             <a href="http://gamejolt.com/invite/natsuno" target="_blank" class="link-card">
                 <i class="fa-solid fa-bolt"></i>
                 <span>Game Jolt</span>
+            </a>
+
+            <a href="LINK_DO_CLA_GOJO_AQUI" target="_blank" class="link-card">
+                <i class="fa-brands fa-discord"></i>
+                <span>Discord (Clã Gojo)</span>
             </a>
 
             <a href="https://discord.gg/t9s3y3mPyG" target="_blank" class="link-card featured-card">
